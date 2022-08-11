@@ -3,11 +3,10 @@ package com.dbs.payment.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,8 +15,12 @@ import javax.persistence.Id;
 public class Bank {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uid", strategy = "uuid")
     private String bic;
     private String bankName;
+
+    @OneToMany(mappedBy = "bank")
+    private List<Transaction> transactions;
 
 }

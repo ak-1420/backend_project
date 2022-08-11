@@ -2,6 +2,7 @@ package com.dbs.payment.entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CustomerUser {
 
     @Id
@@ -22,7 +24,9 @@ public class CustomerUser {
 
     private String userPassword;
 
-    private String customerId;
+    @OneToOne(optional = false , cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id" , referencedColumnName = "customerId")
+    private Customer customer;
 
 
 }
