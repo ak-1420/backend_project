@@ -13,7 +13,5 @@ public interface CustomerService {
 
     Optional<Customer> fetchCustomerById(String customerId);
 
-    Optional<Customer> updateCustomer(String customerId, Customer customer);
-
-    String deleteCustomer(String customerId);
+    Optional<Customer> updateCustomer(String customerId , Customer customer);
 }

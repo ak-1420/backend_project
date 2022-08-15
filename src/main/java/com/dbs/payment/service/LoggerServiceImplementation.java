@@ -27,23 +27,6 @@ public class LoggerServiceImplementation implements LoggerService{
         return loggerRepository.findAll();
     }
 
-    @Override
-    public Optional<Logger> updateLog(Long id, Logger log) {
-        Optional<Logger> lg = loggerRepository.findById(id);
-          if(lg.isPresent()){
-              Logger  logger = lg.get();
-
-              logger.setAction(log.getAction());
-              logger.setIpAddress(log.getIpAddress());
-              logger.setCustomerId(log.getCustomerId());
-              logger.setEmployeeId(log.getEmployeeId());
-              logger.setUserId(log.getUserId());
-              logger.setScreenName(log.getScreenName());
-              loggerRepository.save(logger);
-          }
-        
-        return loggerRepository.findById(id);
-    }
 
     @Override
     public String deleteLog(Long id) {

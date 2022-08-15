@@ -9,16 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/bank")
 public class BankController {
 
      @Autowired
      private BankService bankService;
-
-     @PostMapping("/add")
-     public Bank addBank(@RequestBody Bank bank){
-         return bankService.addBank(bank);
-     }
 
      @GetMapping("/all")
      public List<Bank> fetchAllBanks(){
@@ -30,13 +26,4 @@ public class BankController {
          return bankService.fetchBankById(id);
      }
 
-     @PatchMapping("/{id}")
-     public Optional<Bank> updateBank(@PathVariable String id , @RequestBody Bank bank){
-         return bankService.updateBank(id , bank);
-     }
-
-     @DeleteMapping("/{id}")
-     public String deleteBank(@PathVariable String id){
-         return bankService.deleteBank(id);
-     }
 }

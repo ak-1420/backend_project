@@ -18,15 +18,10 @@ public class CustomerUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
-
     @Column(unique = true)
     private String userName;
-
     private String userPassword;
 
-    @OneToOne(optional = false , cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id" , referencedColumnName = "customerId")
-    private Customer customer;
 
 
 }

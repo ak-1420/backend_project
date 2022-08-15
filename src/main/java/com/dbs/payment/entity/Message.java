@@ -13,12 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Message {
+
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name="system-uuid",strategy = "uuid")
     private String messageCode;
     private String instruction;
 
-    @OneToMany(mappedBy = "message")
-    private List<Transaction> transactions;
 }

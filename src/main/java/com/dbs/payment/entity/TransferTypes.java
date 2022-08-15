@@ -15,10 +15,7 @@ import java.util.List;
 public class TransferTypes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String transferTypeCode;
     private String transferTypeDescription;
 
-    @OneToMany(mappedBy = "transferTypes")
-    private List<Transaction> transactions;
 }

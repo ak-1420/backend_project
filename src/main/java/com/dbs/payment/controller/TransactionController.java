@@ -5,13 +5,12 @@ import com.dbs.payment.entity.Transaction;
 import com.dbs.payment.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.w3c.dom.stylesheets.LinkStyle;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/transaction")
 public class TransactionController {
 
@@ -32,16 +31,6 @@ public class TransactionController {
     @GetMapping("/{id}")
     public Optional<Transaction> fetchTransactionById(@PathVariable Long id){
         return transactionService.fetchTransactionById(id);
-    }
-
-    @PatchMapping("/{id}")
-    public Optional<Transaction> updateTransaction(@PathVariable Long id , @RequestBody Transaction transaction){
-        return transactionService.updateTransaction(id , transaction);
-    }
-
-    @DeleteMapping("/{id}")
-    public String deleteTransaction(@PathVariable Long id){
-        return transactionService.deleteTransaction(id);
     }
 
 

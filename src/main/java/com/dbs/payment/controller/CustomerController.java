@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/customer")
 public class CustomerController {
 
@@ -31,14 +32,10 @@ public class CustomerController {
     }
 
     @PatchMapping("/{customerId}")
-    public Optional<Customer> updateCustomer(@PathVariable String customerId ,@RequestBody Customer customer){
+    public Optional<Customer> updateCustomer(@PathVariable String customerId , @RequestBody Customer customer){
         return customerService.updateCustomer(customerId , customer);
     }
 
-    @DeleteMapping("/{customerId}")
-    public String deleteCustomer(@PathVariable String customerId){
-        return customerService.deleteCustomer(customerId);
-    }
 
 
 

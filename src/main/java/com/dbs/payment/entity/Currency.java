@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -15,13 +14,8 @@ import java.util.List;
 public class Currency {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String currencyCode;
     private String currencyName;
     private double conversionRate;
-
-
-    @OneToMany(mappedBy = "currency")
-    private List<Transaction> transactions;
 
 }

@@ -11,8 +11,4 @@ public interface TransactionService {
     List<Transaction> fetchAllTransactions();
 
     Optional<Transaction> fetchTransactionById(Long id);
-
-    Optional<Transaction> updateTransaction(Long id, Transaction transaction);
-
-    String deleteTransaction(Long id);
 }

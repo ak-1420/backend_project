@@ -21,12 +21,5 @@ public class Logger {
     private String action;
     private String ipAddress;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="customer_id" , referencedColumnName = "customerId")
-    private Customer customer;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="employee_id" , referencedColumnName = "employeeId")
-    private Employee employee;
 
 }

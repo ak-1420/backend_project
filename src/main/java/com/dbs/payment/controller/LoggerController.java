@@ -30,10 +30,6 @@ public class LoggerController {
         return loggerService.getLogs();
     }
 
-    @PatchMapping("/{id}")
-    public Optional<Logger> updateLog(@PathVariable Long id ,@RequestBody Logger log){
-        return loggerService.updateLog(id , log);
-    }
 
     @DeleteMapping("/{id}")
     public String deleteLog(@PathVariable Long id){

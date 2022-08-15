@@ -2,6 +2,7 @@ package com.dbs.payment.service;
 
 import com.dbs.payment.entity.Customer;
 import com.dbs.payment.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 @Service
 public class CustomerServiceImplementation implements CustomerService{
 
+    @Autowired
     private CustomerRepository customerRepository;
 
     @Override
@@ -28,28 +30,16 @@ public class CustomerServiceImplementation implements CustomerService{
     }
 
     @Override
-    public Optional<Customer> updateCustomer(String customerId, Customer customer) {
-        Optional<Customer> cust1 = customerRepository.findById(customerId);
-        if(cust1.isPresent()){
-            Customer cust2 = cust1.get();
-            cust2.setCustomerCity(customer.getCustomerCity());
-            cust2.setCustomerAddress(customer.getCustomerAddress());
-            cust2.setCustomerType(customer.getCustomerType());
-            cust2.setOverDraftFlag(customer.getOverDraftFlag());
-            cust2.setAccountHolderName(customer.getAccountHolderName());
-            cust2.setClearBalance(customer.getClearBalance());
-            customerRepository.save(cust2);
+    public Optional<Customer> updateCustomer(String customerId , Customer cust) {
+        Optional<Customer> oCust = customerRepository.findById(customerId);
+
+        if(oCust.isPresent()){
+            Customer customer = oCust.get();
+            customer.setClearBalance(cust.getClearBalance());
+            customerRepository.save(customer);
         }
         return customerRepository.findById(customerId);
     }
 
-    @Override
-    public String deleteCustomer(String customerId) {
-        Optional<Customer> oCust = customerRepository.findById(customerId);
-        if(oCust.isPresent()){
-            customerRepository.deleteById(customerId);
-            return "customer record deleted successfully!";
-        }
-        return "unable to delete the customer with the given customer Id";
-    }
+
 }

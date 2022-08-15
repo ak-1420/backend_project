@@ -19,7 +19,5 @@ public class Employee {
     private String employeeName;
     private String employeePassword;
 
-    @OneToMany(mappedBy = "employee")
-    private List<Logger> logs;
 
 }
