@@ -5,6 +5,7 @@ import com.dbs.payment.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +37,11 @@ public class CustomerController {
         return customerService.updateCustomer(customerId , customer);
     }
 
+
+    @GetMapping("/sdn/{name}")
+    public Boolean searchSDN (@PathVariable String name) throws IOException {
+        return customerService.searchSDN(name);
+    }
 
 
 
